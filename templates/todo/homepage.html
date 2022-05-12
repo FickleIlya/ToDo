@@ -1,0 +1,27 @@
+{% extends 'todo/base.html' %}
+
+{% block head %}
+<title>Homepage</title>
+{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<div class="row justify-content-center mt-5">
+        <div class="col-md-7 text-center">
+            <h1>Do ToDooo</h1>
+            {% if not user.is_authenticated %}
+            <p>Here you can do your personal ToDo list and complete all this ToDos</p>
+            <p>Press button to start!</p>
+        <a role="button" class="btn btn-primary btn-lg" href="{% url 'signup_user' %}">Start</a>
+            {% else %}
+            <h2>Nice to see you {{ user.username }}! Lest start do todos!</h2>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
