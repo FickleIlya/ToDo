@@ -19,14 +19,17 @@
             {% endif %}
             <form method="POST">
                 {% csrf_token %}
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" class="form-control" id="username">
+                <div class="form-error">
+                    {{ form.non_field_errors }}
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" class="form-control" id="password">
-                </div>
+
+                {% for f in form %}
+                    <p>
+                        <label class="foem-label" for="{{ f.id_for_label }}"> {{ f.label }}: </label>
+                        {{ f }}
+                    </p>
+                <div class="form-error"> {{ f.errors }}</div>
+                {% endfor %}
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
             <hr>
